@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="meanStartApp">
+<html lang="en" ng-app="meanStartApp" ng-controller="WorkListCtrl">
 <head>
     <meta charset="utf-8">
-    <title>Work Processor</title>
+    <title ng-bind-template="Work Processor: {{query}}">Work Processor</title>
     <script src="lib/angular/angular.js"></script>
     <script src="js/controllers.js"></script>
 </head>
-<body ng-controller="WorkListCtrl">
+<body>
 
     <p>Total numer of works: {{works.length}}</p>
-    <ul>
-        <li ng-repeat="work in works">
+    <p>Search: <input ng-model="query"/></p>
+    <div id="status">Current filter: {{query}}</div>
+    <ul class="works">
+        <li ng-repeat="work in works | filter:query">
             {{work.name}}
             <p>{{work.description}}</p>
         </li>
