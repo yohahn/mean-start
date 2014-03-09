@@ -46,7 +46,7 @@ describe('MeanStart App', function() {
         });
 
         it('should display placeholder page with workId', function() {
-            expect(binding('workId')).toBe('101');
+            expect(binding('work.name')).toBe('angular only (phase 1)');
         });
     });
 });

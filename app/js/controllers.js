@@ -10,8 +10,10 @@ meanStartControllers.controller('WorkListCtrl', ['$scope', '$http',
     }
 ]);
 
-meanStartControllers.controller('WorkDetailCtrl', ['$scope', '$routeParams',
-    function($scope, $routeParams) {
-        $scope.workId = $routeParams.workId;
+meanStartControllers.controller('WorkDetailCtrl', ['$scope', '$routeParams', '$http',
+    function($scope, $routeParams, $http) {
+        $http.get('works/' + $routeParams.workId + '.json').success(function(data) {
+            $scope.work = data;
+        });
     }
 ]);

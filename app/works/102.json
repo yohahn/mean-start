@@ -1,0 +1,8 @@
+{
+    "id": 102,
+    "name": "node and express (phase 2)",
+    "description": "next up: node and express, no mongo yet.",
+    "started": false,
+    "completed": false,
+    "order": 2
+}
