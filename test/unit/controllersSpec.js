@@ -1,3 +1,5 @@
+'use strict';
+
 describe('MeanStart controllers', function() {
 
     describe('WorkListCtrl', function() {
@@ -27,5 +29,9 @@ describe('MeanStart controllers', function() {
         it('should set the default value of orderProp model', function() {
             expect(scope.orderProp).toBe('order');
         });
+    });
+
+    describe('WorkDetailCtrl', function() {
+
     });
 });

@@ -1,0 +1,15 @@
+<p>Search: <input ng-model="query"/></p>
+<p>
+    Sort by:
+    <select ng-model="orderProp">
+        <option value="name">Alphabetical</option>
+        <option value="order">Work Order</option>
+    </select>
+</p>
+
+<ul class="works">
+    <li ng-repeat="work in works | filter:query | orderBy:orderProp">
+        <a href="#/works/{{work.id}}">{{work.name}}</a>
+        <p>{{work.description}}</p>
+    </li>
+</ul>

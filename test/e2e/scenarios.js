@@ -1,4 +1,11 @@
+'use strict';
+
 describe('MeanStart App', function() {
+
+    it('should redirect index.html to index.html#/works', function() {
+        browser().navigateTo("app/index.html");
+        expect(browser().location().url()).toBe('/works');
+    });
 
     describe('Work list view', function() {
 
@@ -16,17 +23,6 @@ describe('MeanStart App', function() {
             expect(repeater('.works li').count()).toBe(2);
         });
 
-        it('should display the current filter value within an element with id "status', function() {
-            expect(element('#status').text()).toMatch(/Current filter: \s*$/);
-
-            input('query').enter('angular');
-
-            expect(element('#status').text()).toMatch(/Current filter: angular\s*$/);
-
-            // alternative version of the last assertion that tests just the value of the binding
-            using('#status').expect(binding('query')).toBe('angular');
-        });
-
         it('should be possible to control work order via the drop down select box', function() {
             // let's narrow the dataset to make the test assertions shorter
             input('query').enter('mongo');
@@ -40,6 +36,17 @@ describe('MeanStart App', function() {
             expect(repeater('.works li', 'Work List').column('work.name')).
                 toEqual(["mongo (phase 3)",
                          "node and express (phase 2)"]);
+        });
+    });
+
+    describe('Work detail view', function() {
+
+        beforeEach(function() {
+            browser().navigateTo('app/index.html#/works/101');
+        });
+
+        it('should display placeholder page with workId', function() {
+            expect(binding('workId')).toBe('101');
         });
     });
 });

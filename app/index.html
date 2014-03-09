@@ -1,30 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="meanStartApp" ng-controller="WorkListCtrl">
+<html lang="en" ng-app="meanStartApp">
 <head>
     <meta charset="utf-8">
-    <title ng-bind-template="Work Processor: {{query}}">Work Processor</title>
+    <title>Work Processor</title>
     <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
 </head>
 <body>
 
-    <p>Total numer of works: {{works.length}}</p>
-    <p>Search: <input ng-model="query"/></p>
-    <p>Sort by:
-        <select ng-model="orderProp">
-            <option value="name">Alphabetical</option>
-            <option value="order">Work Order</option>
-        </select>
-    </p>
-    <div id="status">Current filter: {{query}}</div>
-    <ul class="works">
-        <li ng-repeat="work in works | filter:query | orderBy:orderProp">
-            {{work.name}}
-            <p>{{work.description}}</p>
-        </li>
-    </ul>
-
-    {{works | json}}
+    <div ng-view></div>
 
 </body>
 </html>
