@@ -2,8 +2,16 @@
 
 describe('MeanStart controllers', function() {
 
-    // Load our app module definition before each test.
+    beforeEach(function() {
+        this.addMatchers({
+            toEqualData: function(expected) {
+                return angular.equals(this.actual, expected);
+            }
+        });
+    });
+
     beforeEach(module('meanStartApp'));
+    beforeEach(module('meanStartServices'));
 
     describe('WorkListCtrl', function() {
         var scope, ctrl, $httpBackend;
@@ -20,10 +28,10 @@ describe('MeanStart controllers', function() {
         }));
 
         it('should create "works" model with 2 works fetched from xhr', function() {
-            expect(scope.works).toBeUndefined();
+            expect(scope.works).toEqualData([]);
             $httpBackend.flush();
 
-            expect(scope.works).toEqual([{name: 'mongo'}, {name: 'bootstrap'}]);
+            expect(scope.works).toEqualData([{name: 'mongo'}, {name: 'bootstrap'}]);
         });
 
         it('should set the default value of orderProp model', function() {
@@ -44,10 +52,10 @@ describe('MeanStart controllers', function() {
         }));
 
         it('should fetch work detail', function() {
-            expect(scope.work).toBeUndefined();
+            expect(scope.work).toEqualData({});
             $httpBackend.flush();
 
-            expect(scope.work).toEqual({name:'Test Work!'});
+            expect(scope.work).toEqualData({name:'Test Work!'});
         });
     });
 });

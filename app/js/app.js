@@ -1,7 +1,10 @@
+'use strict';
+
 var meanStartApp = angular.module('meanStartApp', [
     'ngRoute',
     'meanStartControllers',
-    'meanStartFilters'
+    'meanStartFilters',
+    'meanStartServices'
 ]);
 
 meanStartApp.config(['$routeProvider',
