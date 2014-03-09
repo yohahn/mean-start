@@ -15,5 +15,9 @@ meanStartControllers.controller('WorkDetailCtrl', ['$scope', '$routeParams', '$h
         $http.get('works/' + $routeParams.workId + '.json').success(function(data) {
             $scope.work = data;
         });
+
+        $scope.hello = function(name) {
+            alert('Hello ' + (name || 'world') + '!');
+        }
     }
 ]);
