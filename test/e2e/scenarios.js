@@ -7,7 +7,7 @@ describe('MeanStart App', function() {
         });
 
         it('should filter the work list as user types into the search box', function() {
-            expect(repeater('.works li').count()).toBe(3);
+            expect(repeater('.works li').count()).toBe(4);
 
             input('query').enter('angular');
             expect(repeater('.works li').count()).toBe(1);
