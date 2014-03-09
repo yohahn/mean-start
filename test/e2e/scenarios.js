@@ -1,10 +1,3 @@
-/**
- * Created with IntelliJ IDEA.
- * User: yohahnkim
- * Date: 3/8/14
- * Time: 8:04 PM
- * To change this template use File | Settings | File Templates.
- */
 describe('MeanStart App', function() {
 
     describe('Work list view', function() {
@@ -32,6 +25,21 @@ describe('MeanStart App', function() {
 
             // alternative version of the last assertion that tests just the value of the binding
             using('#status').expect(binding('query')).toBe('angular');
+        });
+
+        it('should be possible to control work order via the drop down select box', function() {
+            // let's narrow the dataset to make the test assertions shorter
+            input('query').enter('mongo');
+
+            expect(repeater('.works li', 'Work List').column('work.name')).
+                toEqual(["node and express (phase 2)",
+                         "mongo (phase 3)"]);
+
+            select('orderProp').option('Alphabetical');
+
+            expect(repeater('.works li', 'Work List').column('work.name')).
+                toEqual(["mongo (phase 3)",
+                         "node and express (phase 2)"]);
         });
     });
 });

@@ -10,9 +10,15 @@
 
     <p>Total numer of works: {{works.length}}</p>
     <p>Search: <input ng-model="query"/></p>
+    <p>Sort by:
+        <select ng-model="orderProp">
+            <option value="name">Alphabetical</option>
+            <option value="order">Work Order</option>
+        </select>
+    </p>
     <div id="status">Current filter: {{query}}</div>
     <ul class="works">
-        <li ng-repeat="work in works | filter:query">
+        <li ng-repeat="work in works | filter:query | orderBy:orderProp">
             {{work.name}}
             <p>{{work.description}}</p>
         </li>
