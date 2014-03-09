@@ -1,6 +1,7 @@
 var meanStartApp = angular.module('meanStartApp', [
     'ngRoute',
-    'meanStartControllers'
+    'meanStartControllers',
+    'meanStartFilters'
 ]);
 
 meanStartApp.config(['$routeProvider',
