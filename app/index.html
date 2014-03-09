@@ -1,14 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="meanStartApp">
 <head>
     <meta charset="utf-8">
-    <title>My HTML File</title>
-    <script src="../lib/angular/angular.js"></script>
+    <title>Work Processor</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="js/controllers.js"></script>
 </head>
-<body>
+<body ng-controller="WorkListCtrl">
 
-    <p>Nothing here {{'yet' + '!'}}</p>
-    <p>1 + 2 = {{ 1 + 2 }}</p>
+    <p>Total numer of works: {{works.length}}</p>
+    <ul>
+        <li ng-repeat="work in works">
+            {{work.name}}
+            <p>{{work.description}}</p>
+        </li>
+    </ul>
+
+    <p>Hello, {{name}}!</p>
+
+    <table>
+        <tr><th>row number</th></tr>
+        <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]">
+            <td>{{i+1}}</td>
+        </tr>
+    </table>
 
 </body>
 </html>
